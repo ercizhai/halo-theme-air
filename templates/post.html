@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="https://www.thymeleaf.org" th:replace="~{modules/layout :: html(content = ~{::content})}">
+<html xmlns:th="https://www.thymeleaf.org" th:replace="~{modules/layout :: html(head = null, content = ~{::content})}">
   <th:block th:fragment="content">
-    <article th:utext="${post.content.content}" class="markdown-body max-w-4xl p-10"></article>
+    <h1 th:text="${post.spec.title}" class="text-slate-800 font-bold text-3xl leading-loose"></h1>
+    <article th:utext="${post.content.content}" class="markdown-body"></article>
   </th:block>
 </html>

@@ -1,14 +1,36 @@
 <!DOCTYPE html>
-<html lang="en" th:fragment="html (content)">
+<html xmlns:th="https://www.thymeleaf.org" lang="en" th:fragment="html (head, content)">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2" />
     <title th:text="${site.title}"></title>
-    <link rel="stylesheet" th:href="@{/assets/dist/style.css}" href="./assets/dist/style.css" />
-    <script th:src="@{/assets/dist/main.iife.js}"></script>
+    <link rel="shortcut icon" th:href="${site.favicon}" type="image/x-icon">
+    <link rel="stylesheet" th:href="@{/assets/dist/style.css?v={version}(version=${theme.spec.version})}" />
+    <script th:src="@{/assets/dist/main.iife.js?v={version}(version=${theme.spec.version})}"></script>
+    <th:block th:if="${head != null}">
+      <th:block th:replace="${head}" />
+    </th:block>
   </head>
-  <body th:style="'background-color: '+${theme.config.styles.background_color}">
-    <th:block th:replace="${content}" />
+  <body class="flex bg-slate-50">
+    <div class="h-[100vh] basis-[300px] bg-slate-100">
+      <div class="flex flex-col justify-center items-center pt-16">
+        <img th:src="${site.logo}" alt="logo" class="w-24 rounded-full">
+        <h1 th:text="${site.title}" class="text-slate-900 font-bold text-2xl leading-relaxed mt-2"></h1>
+        <h2 th:text="${site.subtitle}" class="text-slate-600 text-sm"></h2>
+      </div>
+      <div class="mt-24">
+        <ul th:with="menu = ${menuFinder.getPrimary()}" class="flex flex-col justify-center items-center">
+          <li th:each="menuItem : ${menu.menuItems}" class="my-1">
+            <a th:href="@{${menuItem.status.href}}" th:text="${menuItem.status.displayName}" th:target="${menuItem.spec.target?.value}" class="text-slate-700 text-base"></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="flex-auto">
+      <div class="mx-auto w-full max-w-7xl p-12">
+        <th:block th:replace="${content}" />
+      </div>
+    </div>
   </body>
 </html>
