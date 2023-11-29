@@ -1,7 +1,21 @@
+/* 恢复markdown-body中被tailwindcss覆盖的样式 */
 .markdown-body ul {
     list-style: disc;
 }
 
 .markdown-body ol {
     list-style: decimal;
+}
+
+/* 单行文本两端对齐 */
+.text-justify {
+    text-align: justify;
+    text-align-last: justify;
+}
+
+.text-justify::after {
+    content: '';
+    display: inline-block;
+    width: 100%;
+    display: none;
 }

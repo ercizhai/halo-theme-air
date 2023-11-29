@@ -32,6 +32,7 @@
     "prettier": "prettier --write './src/**/*.{js,ts,css,json,ml,yaml,html}' './templates/**/*.html'"
   },
   "devDependencies": {
+    "@types/alpinejs": "^3.13.5",
     "@types/node": "18.11.9",
     "@typescript-eslint/eslint-plugin": "^5.62.0",
     "@typescript-eslint/parser": "^5.62.0",
@@ -44,5 +45,8 @@
     "tailwindcss": "^3.3.5",
     "typescript": "^4.9.5",
     "vite": "^4.5.0"
+  },
+  "dependencies": {
+    "alpinejs": "^3.13.3"
   }
 }

@@ -1,7 +1,16 @@
 <!DOCTYPE html>
 <html xmlns:th="https://www.thymeleaf.org" th:replace="~{modules/layout :: html(head = null, content = ~{::content})}">
   <th:block th:fragment="content">
-    <h1 th:text="${post.spec.title}" class="text-slate-800 font-bold text-3xl leading-loose"></h1>
-    <article th:utext="${post.content.content}" class="markdown-body"></article>
+    <h1 th:text="${post.spec.title}" class="text-slate-800 font-bold text-3xl"></h1>
+    <article th:utext="${post.content.content}" class="markdown-body py-6"></article>
+    <div th:if="${pluginFinder.available('PluginCommentWidget')}">
+      <h3 class="text-2xl font-bold text-slate-800 py-3">评论</h3>
+      <halo:comment
+          group="content.halo.run"
+          kind="Post"
+          th:attr="name=${post.metadata.name}"
+          colorScheme="window.main.currentColorScheme"
+      />
+    </div>
   </th:block>
 </html>

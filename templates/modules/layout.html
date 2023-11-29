@@ -12,24 +12,26 @@
       <th:block th:replace="${head}" />
     </th:block>
   </head>
-  <body class="flex bg-slate-50">
-    <div class="h-[100vh] basis-[300px] bg-slate-100">
+  <body class="bg-slate-50 pl-[300px]">
+    <div class="h-[100vh] w-[300px] bg-slate-100 fixed left-0">
       <div class="flex flex-col justify-center items-center pt-16">
         <img th:src="${site.logo}" alt="logo" class="w-24 rounded-full">
         <h1 th:text="${site.title}" class="text-slate-900 font-bold text-2xl leading-relaxed mt-2"></h1>
         <h2 th:text="${site.subtitle}" class="text-slate-600 text-sm"></h2>
       </div>
       <div class="mt-24">
-        <ul th:with="menu = ${menuFinder.getPrimary()}" class="flex flex-col justify-center items-center">
-          <li th:each="menuItem : ${menu.menuItems}" class="my-1">
-            <a th:href="@{${menuItem.status.href}}" th:text="${menuItem.status.displayName}" th:target="${menuItem.spec.target?.value}" class="text-slate-700 text-base"></a>
+        <ul th:with="menu = ${menuFinder.getPrimary()}" class="flex flex-col justify-center items-center p-4">
+          <li th:each="menuItem : ${menu.menuItems}" class="w-full text-center py-2">
+            <a th:href="@{${menuItem.status.href}}" th:text="${menuItem.status.displayName}" th:target="${menuItem.spec.target?.value}" class="text-slate-700 text-base inline-block w-[50px] text-justify"></a>
           </li>
         </ul>
       </div>
     </div>
-    <div class="flex-auto">
-      <div class="mx-auto w-full max-w-7xl p-12">
-        <th:block th:replace="${content}" />
+    <div>
+      <div class="mx-auto w-full max-w-7xl">
+        <div class="p-12">
+          <th:block th:replace="${content}" />
+        </div>
       </div>
     </div>
   </body>
