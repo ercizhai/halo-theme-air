@@ -5,8 +5,20 @@
       <div>
         <h1 th:text="${post.spec.title}" class="text-slate-800 font-bold text-3xl"></h1>
         <div th:utext="${post.content.content}" class="markdown-body py-6"></div>
+        <div class="text-slate-600 text-base">
+          <p class="my-4" th:if="${not #arrays.isEmpty(post.categories)}">
+            <span class="font-bold">分类:</span>
+            <a th:each="category : ${post.categories}" th:text="${category.spec.displayName}"  th:href="@{${category.status.permalink}}" class="inline-block px-1 hover:text-sky-400 transition-colors"></a>
+          </p>
+          <p class="my-4" th:if="${not #arrays.isEmpty(post.tags)}">
+            <span class="font-bold">标签:</span>
+            <a th:each="tag : ${post.tags}" th:text="|#${tag.spec.displayName}|" th:href="@{${tag.status.permalink}}" class="inline-block px-1 hover:text-sky-400 transition-colors"></a>
+          </p>
+          <p class="text-right" th:text="|发表于 ${#dates.format(post.spec.publishTime, 'yyyy-MM-dd HH:mm')}|"></p>
+          <p class="text-right" th:text="|上次更新 ${#dates.format(post.status.lastModifyTime, 'yyyy-MM-dd HH:mm')}|"></p>
+        </div>
       </div>
-      <div th:if="${pluginFinder.available('PluginCommentWidget')}">
+      <div th:if="${pluginFinder.available('PluginCommentWidget') and post.spec.allowComment}" class="mt-16">
         <h3 class="text-2xl font-bold text-slate-800 py-3">评论</h3>
         <halo:comment
             group="content.halo.run"

@@ -1,3 +1,5 @@
+import { Icons } from "tailwindcss-plugin-icons";
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: "media",
@@ -5,5 +7,14 @@ module.exports = {
   theme: {
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    Icons(() => ({
+      ri: {
+        includeAll: true,
+      },
+      simpleIcons: {
+        includeAll: true,
+      },
+    })),
+  ],
 };

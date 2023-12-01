@@ -10,6 +10,12 @@ dependencies:
     version: 3.13.3
 
 devDependencies:
+  '@iconify-json/ri':
+    specifier: ^1.1.15
+    version: 1.1.15
+  '@iconify-json/simple-icons':
+    specifier: ^1.1.81
+    version: 1.1.81
   '@types/alpinejs':
     specifier: ^3.13.5
     version: 3.13.5
@@ -43,6 +49,9 @@ devDependencies:
   tailwindcss:
     specifier: ^3.3.5
     version: 3.3.5
+  tailwindcss-plugin-icons:
+    specifier: ^2.2.0
+    version: 2.2.0(tailwindcss@3.3.5)
   typescript:
     specifier: ^4.9.5
     version: 4.9.5
@@ -315,6 +324,22 @@ packages:
 
   /@humanwhocodes/object-schema@2.0.1:
     resolution: {integrity: sha512-dvuCeX5fC9dXgJn9t+X5atfmgQAzUOWqS1254Gh0m6i8wKd10ebXkfNKiRK+1GWi/yTvvLDHpoxLr0xxxeslWw==}
+    dev: true
+
+  /@iconify-json/ri@1.1.15:
+    resolution: {integrity: sha512-A1g6jPANPRC1aKthtBpWGn53NI/bf7HsjNr/Zi2n3fIlWLHp4SI8MGXw7POUKAefzipb7HSqlBNpQxGLJ5qe2g==}
+    dependencies:
+      '@iconify/types': 2.0.0
+    dev: true
+
+  /@iconify-json/simple-icons@1.1.81:
+    resolution: {integrity: sha512-QNEZ8W3zjzoulR+anZPxBWzPEZslCcqj2+UCgi1KwWLA3lyuPg8OzKvuYwx9FZWNeNKUuLIvHQNN3mH7Sb6Ibw==}
+    dependencies:
+      '@iconify/types': 2.0.0
+    dev: true
+
+  /@iconify/types@2.0.0:
+    resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
     dev: true
 
   /@jridgewell/gen-mapping@0.3.3:
@@ -1594,6 +1619,14 @@ packages:
   /supports-preserve-symlinks-flag@1.0.0:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
+    dev: true
+
+  /tailwindcss-plugin-icons@2.2.0(tailwindcss@3.3.5):
+    resolution: {integrity: sha512-gtAYh5eAIazE0AmqmD+I//yrpQGHqgS6zkxE2ftlMHZuQURiR4HGpjtOtyJeNqKmVmCPgzqVF+R+hB9QZWzVjg==}
+    peerDependencies:
+      tailwindcss: 3.x
+    dependencies:
+      tailwindcss: 3.3.5
     dev: true
 
   /tailwindcss@3.3.5:
