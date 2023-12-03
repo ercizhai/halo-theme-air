@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="https://www.thymeleaf.org" lang="en" th:fragment="html (head, content)">
+<html xmlns:th="https://www.thymeleaf.org" lang="en" th:fragment="html (head, aside, content)">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -28,9 +28,12 @@
       </div>
     </div>
     <div class="p-12">
-      <div class="mx-auto w-full max-w-7xl">
-        <div>
+      <div class="mx-auto w-full max-w-7xl flex">
+        <div class="flex-1">
           <th:block th:replace="${content}" />
+        </div>
+        <div class="basis-72 ml-8 border" th:if="${aside != null }">
+          <th:block th:replace="${aside}" />
         </div>
       </div>
     </div>

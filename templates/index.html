@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html xmlns:th="https://www.thymeleaf.org" th:replace="~{modules/layout :: html(head = null, content = ~{::content})}">
+<html xmlns:th="https://www.thymeleaf.org" th:replace="~{modules/layout :: html(head = null, aside = null, content = ~{::content})}">
   <th:block th:fragment="content">
     <ul>
-      <li th:each="post : ${posts.items}" class="h-[210px] flex rounded-lg overflow-hidden my-4">
+      <li th:each="post : ${posts.items}" class="h-[210px] flex rounded-lg overflow-hidden my-4 first:mt-0">
         <div th:with="classStr = 'flex-[7] p-4 flex flex-col justify-between overflow-hidden border-slate-200'" th:class="${#strings.isEmpty(post.spec.cover)} ? ${classStr} + ' rounded-lg border' : ${classStr} + ' rounded-l-lg  border-y border-l'">
           <div>
             <h3>
@@ -25,7 +25,7 @@
         </div>
       </li>
     </ul>
-    <div th:if="${posts.hasPrevious or posts.hasNext}" class="my-4 p-4 rounded-lg border border-slate-200 flex justify-between items-center text-slate-600 text-base">
+    <div th:if="${posts.hasPrevious or posts.hasNext}" class="mt-4 p-4 rounded-lg border border-slate-200 flex justify-between items-center text-slate-600 text-base">
       <a th:href="@{${posts.prevUrl}}" class="hover:text-sky-400 transition-colors">
         <span>上一页</span>
       </a>
