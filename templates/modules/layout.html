@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="https://www.thymeleaf.org" lang="en" th:fragment="html (head, aside, content)">
+<html xmlns:th="https://www.thymeleaf.org" lang="en" th:fragment="html (head, aside, content, footer)">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -12,7 +12,7 @@
       <th:block th:replace="${head}" />
     </th:block>
   </head>
-  <body class="bg-white pl-[300px]">
+  <body class="bg-white pl-[300px] color-scheme-auto">
     <div class="h-[100vh] w-[300px] bg-slate-100 fixed left-0">
       <div class="flex flex-col justify-center items-center pt-16">
         <img th:src="${site.logo}" alt="logo" class="w-24 rounded-full">
@@ -32,10 +32,13 @@
         <div class="flex-1">
           <th:block th:replace="${content}" />
         </div>
-        <div class="basis-72 ml-8 border" th:if="${aside != null }">
+        <div class="basis-72 ml-8" th:if="${aside != null }">
           <th:block th:replace="${aside}" />
         </div>
       </div>
     </div>
+    <th:block th:if="${footer != null }">
+      <th:block th:replace="${footer}" />
+    </th:block>
   </body>
 </html>

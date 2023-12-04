@@ -8,6 +8,9 @@ dependencies:
   alpinejs:
     specifier: ^3.13.3
     version: 3.13.3
+  tocbot:
+    specifier: ^4.23.0
+    version: 4.23.0
 
 devDependencies:
   '@iconify-json/ri':
@@ -1683,6 +1686,10 @@ packages:
     dependencies:
       is-number: 7.0.0
     dev: true
+
+  /tocbot@4.23.0:
+    resolution: {integrity: sha512-5DWuSZXsqG894mkGb8ZsQt9myyQyVxE50AiGRZ0obV0BVUTVkaZmc9jbgpknaAAPUm4FIrzGkEseD6FuQJYJDQ==}
+    dev: false
 
   /ts-interface-checker@0.1.13:
     resolution: {integrity: sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==}

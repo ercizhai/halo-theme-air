@@ -1,5 +1,11 @@
 <!DOCTYPE html>
-<html xmlns:th="https://www.thymeleaf.org" th:replace="~{modules/layout :: html(head = null, aside = null, content = ~{::content})}">
+<html xmlns:th="https://www.thymeleaf.org" th:replace="~{modules/layout :: html(head = null, aside = ~{::aside}, content = ~{::content}, footer = ~{::footer})}">
+  <th:block th:fragment="aside">
+    <div class="toc-container border border-slate-200 rounded-lg p-4 text-base sticky top-12"> 
+      <p class="text-slate-800 font-bold text-lg">目录</p>
+      <div class="toc mt-2 -ml-[1em]"></div>
+    </div>
+  </th:block>
   <th:block th:fragment="content">
     <div class="p-12 rounded-lg border border-slate-200">
       <div>
@@ -14,8 +20,8 @@
             <span class="font-bold">标签:</span>
             <a th:each="tag : ${post.tags}" th:text="|#${tag.spec.displayName}|" th:href="@{${tag.status.permalink}}" class="inline-block px-1 hover:text-sky-400 transition-colors"></a>
           </p>
-          <p class="text-right" th:text="|发表于 ${#dates.format(post.spec.publishTime, 'yyyy-MM-dd HH:mm')}|"></p>
-          <p class="text-right" th:text="|上次更新 ${#dates.format(post.status.lastModifyTime, 'yyyy-MM-dd HH:mm')}|"></p>
+          <p class="text-right text-sm" th:text="|发表于 ${#dates.format(post.spec.publishTime, 'yyyy-MM-dd HH:mm')}|"></p>
+          <p class="text-right text-sm" th:text="|上次更新 ${#dates.format(post.status.lastModifyTime, 'yyyy-MM-dd HH:mm')}|"></p>
         </div>
       </div>
       <div th:if="${pluginFinder.available('PluginCommentWidget') and post.spec.allowComment}" class="mt-16">
@@ -28,5 +34,8 @@
         />
       </div>
     </div>
+  </th:block>
+  <th:block th:fragment="footer">
+    <script>main.generateToc()</script>
   </th:block>
 </html>

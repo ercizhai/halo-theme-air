@@ -1,5 +1,11 @@
 <!DOCTYPE html>
-<html xmlns:th="https://www.thymeleaf.org" th:replace="~{modules/layout :: html(head = null, aside = null, content = ~{::content})}">
+<html xmlns:th="https://www.thymeleaf.org" th:replace="~{modules/layout :: html(head = null, aside = ~{::aside}, content = ~{::content})}, footer = null">
+  <th:block th:fragment="aside">
+    <div class="flex" th:if="${pluginFinder.available('PluginSearchWidget')}" onclick="SearchWidget.open()">
+      <input type="text" class="flex-1 h-10 border-y border-l rounded-l-lg border-slate-200 outline-none p-2 text-slate-600" />
+      <button disabled class="basis-20 h-10 bg-slate-200 text-base text-slate-800 rounded-r-lg">搜索</button>
+    </div>
+  </th:block>
   <th:block th:fragment="content">
     <ul>
       <li th:each="post : ${posts.items}" class="h-[210px] flex rounded-lg overflow-hidden my-4 first:mt-0">
