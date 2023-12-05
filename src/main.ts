@@ -36,10 +36,17 @@ export function generateToc() {
     contentSelector: ".markdown-body",
     headingSelector: "h1, h2, h3, h4",
     activeLinkClass: "toc-active-link",
-    extraLinkClasses: "text-base text-slate-600 inline-block my-1 hover:text-sky-400",
+    extraLinkClasses: "text-sm text-slate-600 inline-block my-1 hover:text-sky-400",
     extraListClasses: "ml-[1em]",
     collapseDepth: 6,
     headingsOffset: 100,
     scrollSmooth: true,
   });
+}
+
+export function checkAside() {
+  const aside = document.getElementById("aside");
+  if (aside?.childElementCount === 0) {
+    aside.remove();
+  }
 }

@@ -32,7 +32,7 @@
         <div class="flex-1">
           <th:block th:replace="${content}" />
         </div>
-        <div class="basis-72 ml-8" th:if="${aside != null }">
+        <div id="aside" class="basis-64 ml-10" th:if="${aside != null }">
           <th:block th:replace="${aside}" />
         </div>
       </div>
@@ -40,5 +40,6 @@
     <th:block th:if="${footer != null }">
       <th:block th:replace="${footer}" />
     </th:block>
+    <script>main.checkAside()</script>
   </body>
 </html>
