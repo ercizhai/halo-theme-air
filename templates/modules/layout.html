@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2" />
     <title th:text="${site.title}"></title>
-    <link rel="shortcut icon" th:href="${site.favicon}" type="image/x-icon">
+    <link rel="shortcut icon" th:href="${site.favicon}" type="image/x-icon" />
     <link rel="stylesheet" th:href="@{/assets/dist/style.css?v={version}(version=${theme.spec.version})}" />
     <script th:src="@{/assets/dist/main.iife.js?v={version}(version=${theme.spec.version})}"></script>
     <th:block th:if="${head != null}">
@@ -15,14 +15,19 @@
   <body class="bg-white pl-[300px] color-scheme-auto">
     <div class="h-[100vh] w-[300px] bg-slate-100 fixed left-0">
       <div class="flex flex-col justify-center items-center pt-16">
-        <img th:src="${site.logo}" alt="logo" class="w-24 rounded-full">
+        <img th:src="${site.logo}" alt="logo" class="w-24 rounded-full" />
         <h1 th:text="${site.title}" class="text-slate-900 font-bold text-2xl leading-relaxed mt-2"></h1>
         <h2 th:text="${site.subtitle}" class="text-slate-600 text-sm"></h2>
       </div>
       <div class="mt-24">
         <ul th:with="menu = ${menuFinder.getPrimary()}" class="flex flex-col justify-center items-center p-4">
           <li th:each="menuItem : ${menu.menuItems}" class="w-full text-center py-2">
-            <a th:href="@{${menuItem.status.href}}" th:text="${menuItem.status.displayName}" th:target="${menuItem.spec.target?.value}" class="text-slate-700 hover:text-sky-400 text-base inline-block w-[50px] text-justify transition-colors"></a>
+            <a
+              th:href="@{${menuItem.status.href}}"
+              th:text="${menuItem.status.displayName}"
+              th:target="${menuItem.spec.target?.value}"
+              class="text-slate-700 hover:text-sky-400 text-base inline-block w-[50px] text-justify transition-colors"
+            ></a>
           </li>
         </ul>
       </div>
@@ -40,6 +45,8 @@
     <th:block th:if="${footer != null }">
       <th:block th:replace="${footer}" />
     </th:block>
-    <script>main.checkAside()</script>
+    <script>
+      main.checkAside();
+    </script>
   </body>
 </html>
