@@ -4,7 +4,7 @@
   th:replace="~{modules/layout :: html(head = null, aside = ~{::aside}, content = ~{::content}, footer = ~{::footer})}"
 >
   <th:block th:fragment="aside">
-    <div th:replace="~{modules/widgets/search}"></div>
+    <div th:replace="~{modules/search}"></div>
     <div class="toc-container my-8 sticky top-12">
       <p class="text-slate-800 font-bold text-lg">目录</p>
       <div class="toc mt-2 -ml-[1em]"></div>

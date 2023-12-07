@@ -4,61 +4,9 @@
   th:replace="~{modules/layout :: html(head = null, aside = ~{::aside}, content = ~{::content}, footer = null)}"
 >
   <th:block th:fragment="aside">
-    <div th:replace="~{modules/widgets/search}"></div>
+    <div th:replace="~{modules/search}"></div>
   </th:block>
   <th:block th:fragment="content">
-    <ul>
-      <li th:each="post : ${posts.items}" class="h-[210px] flex rounded-lg overflow-hidden my-4 first:mt-0">
-        <div
-          th:with="classStr = 'flex-[7] p-4 flex flex-col justify-between overflow-hidden border-slate-200'"
-          th:class="${#strings.isEmpty(post.spec.cover)} ? ${classStr} + ' rounded-lg border' : ${classStr} + ' rounded-l-lg  border-y border-l'"
-        >
-          <div>
-            <h3>
-              <a
-                th:text="${post.spec.title}"
-                th:href="${post.status.permalink}"
-                class="h-7 font-bold text-slate-800 hover:text-sky-400 text-xl line-clamp-1 transition-colors"
-              ></a>
-            </h3>
-            <p th:text="${post.status.excerpt}" class="h-14 py-2 text-slate-500 text-base line-clamp-2"></p>
-          </div>
-          <p>
-            <a
-              th:each="tag : ${post.tags}"
-              th:text="|#${tag.spec.displayName}|"
-              th:href="@{${tag.status.permalink}}"
-              class="inline-block px-1 text-slate-600 text-base hover:text-sky-400 transition-colors"
-            ></a>
-          </p>
-          <div class="flex justify-between text-slate-600 text-base">
-            <p>
-              <a
-                th:each="category : ${post.categories}"
-                th:text="${category.spec.displayName}"
-                th:href="@{${category.status.permalink}}"
-                class="inline-block px-1 hover:text-sky-400 transition-colors"
-              ></a>
-            </p>
-            <span th:text="${#dates.format(post.spec.publishTime, 'yyyy-MM-dd')}"></span>
-          </div>
-        </div>
-        <div class="flex-[3]" th:if="${not #strings.isEmpty(post.spec.cover)}">
-          <img th:src="${post.spec.cover}" alt="cover" class="w-full h-full object-cover" />
-        </div>
-      </li>
-    </ul>
-    <div
-      th:if="${posts.hasPrevious or posts.hasNext}"
-      class="mt-4 p-4 rounded-lg border border-slate-200 flex justify-between items-center text-slate-600 text-base"
-    >
-      <a th:href="@{${posts.prevUrl}}" class="hover:text-sky-400 transition-colors">
-        <span>上一页</span>
-      </a>
-      <span th:text="${posts.page} +' / '+ ${posts.totalPages}"></span>
-      <a th:href="@{${posts.nextUrl}}" class="hover:text-sky-400 transition-colors">
-        <span>下一页</span>
-      </a>
-    </div>
+    <th:block th:replace="~{modules/post-list :: list(posts = ${posts})}"></th:block>
   </th:block>
 </html>
