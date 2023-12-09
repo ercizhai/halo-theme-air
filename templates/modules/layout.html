@@ -12,8 +12,11 @@
       <th:block th:replace="${head}" />
     </th:block>
   </head>
-  <body class="bg-white pl-[300px] color-scheme-auto">
-    <div class="h-[100vh] w-[300px] bg-slate-100 fixed left-0">
+  <body class="bg-white pl-0 color-scheme-auto desktop:pl-[300px]">
+    <div
+      id="left-aside"
+      class="min-h-[100vh] h-full w-[300px] max-w-[80vw] bg-slate-100 fixed top-0 left-[-300px] z-20 transition-all overflow-auto desktop:left-0"
+    >
       <div class="flex flex-col justify-center items-center pt-16">
         <img th:src="${site.logo}" alt="logo" class="w-24 rounded-full" />
         <h1 th:text="${site.title}" class="text-slate-900 font-bold text-2xl leading-relaxed mt-2"></h1>
@@ -32,21 +35,39 @@
         </ul>
       </div>
     </div>
-    <div class="p-12">
+    <div class="px-4 py-16 desktop:px-16">
+      <div
+        class="fixed top-0 left-0 z-30 w-screen h-12 flex justify-between items-center p-2 bg-slate-100 shadow desktop:hidden"
+      >
+        <img th:src="${site.logo}" alt="logo" class="h-8" onclick="main.openLeftAside()" />
+        <h1 th:text="${site.title}" class="text-slate-900 font-bold text-lg"></h1>
+        <div id="aside-open-btn" class="flex items-center">
+          <span class="inline-block text-xl i-ri-side-bar-line laptop:hidden" onclick="main.openRightAside()"></span>
+        </div>
+      </div>
       <div class="mx-auto w-full max-w-7xl flex">
-        <div class="flex-1">
+        <div class="flex-1 w-full">
           <th:block th:replace="${content}" />
         </div>
-        <div id="aside" class="basis-64 ml-10" th:if="${aside != null }">
+        <div
+          id="right-aside"
+          class="w-[300px] max-w-[80vw] ml-0 min-h-[100vh] bg-white p-4 fixed top-0 right-[-300px] z-20 transition-all overflow-auto laptop:static laptop:p-0 laptop:pl-8 laptop:overflow-visible"
+          th:if="${aside != null }"
+        >
           <th:block th:replace="${aside}" />
         </div>
       </div>
     </div>
+    <div
+      id="mask"
+      class="w-screen h-screen bg-[#0004] fixed top-0 left-0 z-10 hidden transition-colors"
+      onclick="main.closeAllAside()"
+    ></div>
     <th:block th:if="${footer != null }">
       <th:block th:replace="${footer}" />
     </th:block>
     <script>
-      main.checkAside();
+      main.checkRightAside();
     </script>
   </body>
 </html>

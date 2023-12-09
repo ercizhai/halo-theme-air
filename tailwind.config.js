@@ -5,7 +5,11 @@ module.exports = {
   darkMode: "media",
   content: ["./templates/**/*.html", "./src/main.ts"],
   theme: {
-    extend: {},
+    screens: {
+      tablet: "960px",
+      laptop: "1280px",
+      desktop: "1680px",
+    },
   },
   plugins: [
     Icons(() => ({

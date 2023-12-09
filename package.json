@@ -50,7 +50,6 @@
     "vite": "^4.5.0"
   },
   "dependencies": {
-    "alpinejs": "^3.13.3",
     "tocbot": "^4.23.0"
   }
 }

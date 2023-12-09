@@ -4,17 +4,16 @@
   th:replace="~{modules/layout :: html(head = null, aside = ~{::aside}, content = ~{::content}, footer = ~{::footer})}"
 >
   <th:block th:fragment="aside">
-    <div th:replace="~{modules/search}"></div>
-    <div class="toc-container my-8 sticky top-12">
+    <div class="toc-container sticky top-16">
       <p class="text-slate-800 font-bold text-lg">目录</p>
       <div class="toc mt-2 -ml-[1em]"></div>
     </div>
   </th:block>
   <th:block th:fragment="content">
-    <div class="p-12 rounded-lg border border-slate-200">
+    <div class="border-slate-200 laptop:border laptop:rounded-lg laptop:p-16">
       <div>
         <h1 th:text="${post.spec.title}" class="text-slate-800 font-bold text-3xl"></h1>
-        <div th:utext="${post.content.content}" class="markdown-body py-6"></div>
+        <div th:utext="${post.content.content}" class="markdown-body py-6 w-full overflow-hidden"></div>
         <div class="text-slate-600 text-base">
           <p class="my-4" th:if="${not #arrays.isEmpty(post.categories)}">
             <span class="font-bold">分类:</span>

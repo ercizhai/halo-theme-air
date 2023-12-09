@@ -1,19 +1,25 @@
-<li th:fragment="card (post)" class="h-[210px] flex rounded-lg overflow-hidden my-4 first:mt-0">
+<li
+  th:fragment="card (post)"
+  class="flex flex-col rounded-lg overflow-hidden my-4 first:mt-0 transition-all tablet:flex-row tablet:h-max-[200px]"
+>
+  <div class="flex-[1]" th:if="${not #strings.isEmpty(post.spec.cover)}">
+    <img th:src="${post.spec.cover}" alt="cover" class="w-full aspect-video object-cover tablet:h-auto" />
+  </div>
   <div
-    th:with="classStr = 'flex-[7] p-4 flex flex-col justify-between overflow-hidden border-slate-200'"
-    th:class="${#strings.isEmpty(post.spec.cover)} ? ${classStr} + ' rounded-lg border' : ${classStr} + ' rounded-l-lg  border-y border-l'"
+    th:with="classStr = 'flex-[2] p-2 flex flex-col justify-between overflow-hidden border-slate-200'"
+    th:class="${#strings.isEmpty(post.spec.cover)} ? ${classStr} + ' rounded-lg border' : ${classStr} + ' rounded-b-lg  border-x border-b tablet:rounded-b-none tablet:border-l-0 tablet:rounded-r-lg tablet:border-y tablet:border-r'"
   >
     <div>
       <h3>
         <a
           th:text="${post.spec.title}"
           th:href="${post.status.permalink}"
-          class="h-7 font-bold text-slate-800 hover:text-sky-400 text-xl line-clamp-1 transition-colors"
+          class="font-bold text-slate-800 hover:text-sky-400 text-xl line-clamp-2 transition-colors"
         ></a>
       </h3>
-      <p th:text="${post.status.excerpt}" class="h-14 py-2 text-slate-500 text-base line-clamp-2"></p>
+      <p th:text="${post.status.excerpt}" class="max-h-14 py-2 text-slate-500 text-base line-clamp-2"></p>
     </div>
-    <p>
+    <p class="py-3">
       <a
         th:each="tag : ${post.tags}"
         th:text="|#${tag.spec.displayName}|"
@@ -32,8 +38,5 @@
       </p>
       <span th:text="${#dates.format(post.spec.publishTime, 'yyyy-MM-dd')}"></span>
     </div>
-  </div>
-  <div class="flex-[3]" th:if="${not #strings.isEmpty(post.spec.cover)}">
-    <img th:src="${post.spec.cover}" alt="cover" class="w-full h-full object-cover" />
   </div>
 </li>

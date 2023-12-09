@@ -1,3 +1,9 @@
+body {
+    max-width: 100%;
+    overflow-x: hidden;
+    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Noto Sans,Helvetica,Arial,sans-serif;
+}
+
 /* 恢复markdown-body中被tailwindcss覆盖的样式 */
 .markdown-body ul {
     list-style: disc;
