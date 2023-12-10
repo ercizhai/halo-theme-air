@@ -4,11 +4,16 @@
   th:replace="~{modules/layout :: html(head = null, aside = null, content = ~{::content}, footer = null)}"
 >
   <th:block th:fragment="content">
-    <div class="flex flex-col justify-center items-center border border-slate-200 rounded-lg mb-4 p-4">
+    <div
+      class="flex flex-col justify-center items-center border border-slate-200 rounded-lg mb-4 p-4 dark:border-slate-800"
+    >
       <img th:src="${author.spec.avatar}" alt="avatar" class="w-24 rounded-full" />
-      <h2 th:text="${author.spec.displayName}" class="text-slate-900 font-bold text-2xl leading-relaxed mt-2"></h2>
-      <h3 th:text="${author.spec.bio}" class="text-slate-600 text-sm"></h3>
-      <a th:href="|mailto:${author.spec.email}|" class="text-slate-600 text-sm">
+      <h2
+        th:text="${author.spec.displayName}"
+        class="text-slate-900 font-bold text-2xl leading-relaxed mt-2 dark:text-slate-100"
+      ></h2>
+      <h3 th:text="${author.spec.bio}" class="text-slate-600 text-sm dark:text-slate-400"></h3>
+      <a th:href="|mailto:${author.spec.email}|" class="text-slate-600 text-sm dark:text-slate-400">
         <span class="inline-block i-ri-mail-line align-middle"></span>
         <span th:text="${author.spec.email}" class="align-middle"></span
       ></a>

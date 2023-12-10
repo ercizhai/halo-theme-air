@@ -4,17 +4,20 @@
   th:replace="~{modules/layout :: html(head = null, aside = null, content = ~{::content}, footer = null)}"
 >
   <th:block th:fragment="content">
-    <div class="p-2 rounded-lg border border-slate-200 laptop:p-16">
+    <div class="p-2 rounded-lg border border-slate-200 laptop:p-16 dark:border-slate-800">
       <th:block th:each="archive : ${archives.items}">
         <th:block th:each="month : ${archive.months}">
           <div class="mt-6 first:mt-0">
-            <h2 th:text="|${archive.year}年${month.month}月|" class="text-slate-800 text-2xl font-bold mb-2"></h2>
+            <h2
+              th:text="|${archive.year}年${month.month}月|"
+              class="text-slate-800 text-2xl font-bold mb-2 dark:text-slate-200"
+            ></h2>
             <ul>
               <li th:each="post : ${month.posts}">
                 <a
                   th:href="@{${post.status.permalink}}"
                   th:text="${post.spec.title}"
-                  class="inline-block text-slate-600 hover:text-sky-400 text-base my-1"
+                  class="inline-block text-slate-600 hover:text-sky-400 text-base my-1 dark:text-slate-400"
                 ></a>
               </li>
             </ul>

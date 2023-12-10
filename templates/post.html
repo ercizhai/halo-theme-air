@@ -5,16 +5,16 @@
 >
   <th:block th:fragment="aside">
     <div class="toc-container sticky top-16">
-      <p class="text-slate-800 font-bold text-lg">目录</p>
+      <p class="text-slate-800 font-bold text-lg dark:text-slate-200">目录</p>
       <div class="toc mt-2 -ml-[1em]"></div>
     </div>
   </th:block>
   <th:block th:fragment="content">
-    <div class="border-slate-200 laptop:border laptop:rounded-lg laptop:p-16">
+    <div class="border-slate-200 laptop:border laptop:rounded-lg laptop:p-16 dark:border-slate-800">
       <div>
-        <h1 th:text="${post.spec.title}" class="text-slate-800 font-bold text-3xl"></h1>
+        <h1 th:text="${post.spec.title}" class="text-slate-800 font-bold text-3xl dark:text-slate-200"></h1>
         <div th:utext="${post.content.content}" class="markdown-body py-6 w-full overflow-hidden"></div>
-        <div class="text-slate-600 text-base">
+        <div class="text-slate-600 text-base dark:text-slate-400">
           <p class="my-4" th:if="${not #arrays.isEmpty(post.categories)}">
             <span class="font-bold">分类:</span>
             <a
@@ -44,7 +44,7 @@
         </div>
       </div>
       <div th:if="${pluginFinder.available('PluginCommentWidget') and post.spec.allowComment}" class="mt-16">
-        <h3 class="text-2xl font-bold text-slate-800 py-3">评论</h3>
+        <h3 class="text-2xl font-bold text-slate-800 py-3 dark:text-slate-200">评论</h3>
         <halo:comment
           group="content.halo.run"
           kind="Post"

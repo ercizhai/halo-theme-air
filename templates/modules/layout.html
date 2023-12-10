@@ -12,15 +12,18 @@
       <th:block th:replace="${head}" />
     </th:block>
   </head>
-  <body class="bg-white pl-0 color-scheme-auto desktop:pl-[300px]">
+  <body class="bg-white pl-0 color-scheme-auto desktop:pl-[300px] dark:bg-slate-900">
     <div
       id="left-aside"
-      class="min-h-[100vh] h-full w-[300px] max-w-[80vw] bg-slate-100 fixed top-0 left-[-300px] z-20 transition-all overflow-auto desktop:left-0"
+      class="min-h-[100vh] h-full w-[300px] max-w-[80vw] bg-slate-100 fixed top-0 left-[-300px] z-20 transition-all overflow-auto desktop:left-0 dark:bg-slate-950"
     >
       <div class="flex flex-col justify-center items-center pt-16">
         <img th:src="${site.logo}" alt="logo" class="w-24 rounded-full" />
-        <h1 th:text="${site.title}" class="text-slate-900 font-bold text-2xl leading-relaxed mt-2"></h1>
-        <h2 th:text="${site.subtitle}" class="text-slate-600 text-sm"></h2>
+        <h1
+          th:text="${site.title}"
+          class="text-slate-900 font-bold text-2xl leading-relaxed mt-2 dark:text-slate-100"
+        ></h1>
+        <h2 th:text="${site.subtitle}" class="text-slate-600 text-sm dark:text-slate-400"></h2>
       </div>
       <div class="mt-24">
         <ul th:with="menu = ${menuFinder.getPrimary()}" class="flex flex-col justify-center items-center p-4">
@@ -29,7 +32,7 @@
               th:href="@{${menuItem.status.href}}"
               th:text="${menuItem.status.displayName}"
               th:target="${menuItem.spec.target?.value}"
-              class="text-slate-700 hover:text-sky-400 text-base inline-block w-[50px] text-justify transition-colors"
+              class="text-slate-700 hover:text-sky-400 text-base inline-block w-[50px] text-justify transition-colors dark:text-slate-300"
             ></a>
           </li>
         </ul>
@@ -37,12 +40,15 @@
     </div>
     <div class="px-4 py-16 desktop:px-16">
       <div
-        class="fixed top-0 left-0 z-30 w-screen h-12 flex justify-between items-center p-2 bg-slate-100 shadow desktop:hidden"
+        class="fixed top-0 left-0 z-30 w-screen h-12 flex justify-between items-center p-2 bg-slate-100 shadow desktop:hidden dark:bg-slate-950"
       >
         <img th:src="${site.logo}" alt="logo" class="h-8" onclick="main.openLeftAside()" />
-        <h1 th:text="${site.title}" class="text-slate-900 font-bold text-lg"></h1>
+        <h1 th:text="${site.title}" class="text-slate-900 font-bold text-lg dark:text-slate-100"></h1>
         <div id="aside-open-btn" class="flex items-center">
-          <span class="inline-block text-xl i-ri-side-bar-line laptop:hidden" onclick="main.openRightAside()"></span>
+          <span
+            class="inline-block text-xl text-slate-700 i-ri-side-bar-line laptop:hidden dark:text-slate-300"
+            onclick="main.openRightAside()"
+          ></span>
         </div>
       </div>
       <div class="mx-auto w-full max-w-7xl flex">
@@ -51,7 +57,7 @@
         </div>
         <div
           id="right-aside"
-          class="w-[300px] max-w-[80vw] ml-0 min-h-[100vh] bg-white p-4 fixed top-0 right-[-300px] z-20 transition-all overflow-auto laptop:static laptop:p-0 laptop:pl-8 laptop:overflow-visible"
+          class="w-[300px] max-w-[80vw] ml-0 min-h-[100vh] bg-white p-4 fixed top-0 right-[-300px] z-20 transition-all overflow-auto laptop:static laptop:p-0 laptop:pl-8 laptop:overflow-visible dark:bg-slate-950 laptop:bg-transparent"
           th:if="${aside != null }"
         >
           <th:block th:replace="${aside}" />

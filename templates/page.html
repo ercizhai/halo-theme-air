@@ -4,7 +4,7 @@
   th:replace="~{modules/layout :: html(head = null, aside = null, content = ~{::content}, footer = null)}"
 >
   <th:block th:fragment="content">
-    <div class="border-slate-200 laptop:border laptop:rounded-lg laptop:p-16">
+    <div class="border-slate-200 laptop:border laptop:rounded-lg laptop:p-16 dark:border-slate-800">
       <div th:utext="${singlePage.content.content}" class="markdown-body"></div>
     </div>
   </th:block>

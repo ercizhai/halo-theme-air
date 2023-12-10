@@ -9,7 +9,10 @@
       th:replace="~{modules/pagination :: pagination(current = ${posts.page}, total = ${posts.totalPages}, prev = ${posts.prevUrl}, next = ${posts.nextUrl})}"
     ></th:block>
   </th:block>
-  <div th:if="${#lists.isEmpty(posts.items)}" class="text-center border border-slate-200 rounded-lg my-4 p-4">
+  <div
+    th:if="${#lists.isEmpty(posts.items)}"
+    class="text-center border border-slate-200 rounded-lg my-4 p-4 dark:border-slate-800"
+  >
     <p class="text-slate-600 text-2xl font-bold">暂无文章</p>
   </div>
 </th:block>
