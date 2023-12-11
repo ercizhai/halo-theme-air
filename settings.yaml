@@ -4,10 +4,62 @@ metadata:
   name: theme-air-setting
 spec:
   forms:
-    - group: styles
-      label: 样式
+    - group: socials
+      label: 社交账号
       formSchema:
-        - $formkit: color
-          name: background_color
-          label: 背景颜色
-          value: "#f2f2f2"
+        - $formkit: repeater
+          name: socialArray
+          label: 账号列表
+          value: []
+          max: 5
+          insertControl: false
+          children:
+            - $formkit: select
+              name: type
+              label: 类型
+              value: "github"
+              options:
+                - label: GitHub
+                  value: github
+                - label: GitLab
+                  value: gitlab
+                - label: Twitter
+                  value: twitter
+                - label: X
+                  value: twitter-x
+                - label: Telegram
+                  value: telegram
+                - label: Facebook
+                  value: facebook
+                - label: Linkedin
+                  value: linkedin
+                - label: Slack
+                  value: slack
+                - label: Youtube
+                  value: youtube
+                - label: TikTok
+                  value: tiktok
+                - label: Instagram
+                  value: instagram
+                - label: WhatsApp
+                  value: whatsapp
+                - label: Discord
+                  value: discord
+                - label: RSS
+                  value: rss
+                - label: 微博
+                  value: weibo
+                - label: 哔哩哔哩
+                  value: bilibili
+                - label: 微信
+                  value: wechat
+                - label: QQ
+                  value: qq
+                - label: 知乎
+                  value: zhihu
+                - label: 豆瓣
+                  value: douban
+            - $formkit: text
+              name: link
+              label: 地址
+              value: ""

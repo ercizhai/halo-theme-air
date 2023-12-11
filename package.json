@@ -1,28 +1,28 @@
 {
-  "description": "A development starter theme with Vite Ecosystem for Halo",
+  "description": "一款简约的Halo2.0个人博客主题",
   "keywords": [
     "halo",
     "halo-theme"
   ],
-  "homepage": "https://github.com/halo-dev/theme-vite-starter#readme",
+  "homepage": "https://github.com/ercizhai/halo-theme-air#readme",
   "bugs": {
-    "url": "https://github.com/halo-dev/theme-vite-starter/issues"
+    "url": "https://github.com/ercizhai/halo-theme-air/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/halo-dev/theme-vite-starter"
+    "url": "https://github.com/ercizhai/halo-theme-air"
   },
   "license": "GPL-3.0",
   "author": {
-    "name": "Halo",
-    "email": "hi@halo.run",
-    "url": "https://github.com/halo-dev"
+    "name": "Zack",
+    "email": "ercizhai@gmail.com",
+    "url": "https://ercz.cc"
   },
   "maintainers": [
     {
-      "name": "Ryan Wang",
-      "email": "i@ryanc.cc",
-      "url": "https://github.com/ruibaby"
+      "name": "Zack",
+      "email": "ercizhai@gmail.com",
+      "url": "https://github.com/ercizhai"
     }
   ],
   "scripts": {
@@ -32,7 +32,7 @@
     "prettier": "prettier --write './src/**/*.{js,ts,css,json,ml,yaml,html}' './templates/**/*.html'"
   },
   "devDependencies": {
-    "@iconify-json/ri": "^1.1.15",
+    "@iconify-json/ri": "^1.1.16",
     "@iconify-json/simple-icons": "^1.1.81",
     "@types/alpinejs": "^3.13.5",
     "@types/node": "18.11.9",

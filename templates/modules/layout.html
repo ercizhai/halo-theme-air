@@ -24,6 +24,16 @@
           class="text-slate-900 font-bold text-2xl leading-relaxed mt-2 dark:text-slate-100"
         ></h1>
         <h2 th:text="${site.subtitle}" class="text-slate-600 text-sm dark:text-slate-400"></h2>
+        <p th:if="${not #arrays.isEmpty(theme.config.socials.socialArray)}">
+          <a
+            th:each="social : ${theme.config.socials.socialArray}"
+            th:href="@{${social.link}}"
+            target="_blank"
+            class="inline-block text-lg p-1 text-slate-600 dark:text-slate-400"
+          >
+            <span th:class="|inline-block i-ri-${social.type}-fill|"></span>
+          </a>
+        </p>
       </div>
       <div class="mt-24">
         <ul th:with="menu = ${menuFinder.getPrimary()}" class="flex flex-col justify-center items-center p-4">
