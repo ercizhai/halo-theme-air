@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html
   xmlns:th="https://www.thymeleaf.org"
-  th:replace="~{modules/layout :: html(head = null, aside = null, content = ~{::content}, footer = null)}"
+  th:replace="~{modules/layout :: html(title = '归档', aside = null, content = ~{::content}, footer = null)}"
 >
   <th:block th:fragment="content">
     <div class="p-2 rounded-lg border border-slate-200 laptop:p-16 dark:border-slate-800">
@@ -13,11 +13,11 @@
               class="text-slate-800 text-2xl font-bold mb-2 dark:text-slate-200"
             ></h2>
             <ul>
-              <li th:each="post : ${month.posts}">
+              <li th:each="post : ${month.posts}" class="text-slate-600 dark:text-slate-400">
                 <a
                   th:href="@{${post.status.permalink}}"
                   th:text="${post.spec.title}"
-                  class="inline-block text-slate-600 hover:text-sky-400 text-base my-1 dark:text-slate-400"
+                  class="inline-block hover:text-sky-400 text-base my-1"
                 ></a>
               </li>
             </ul>

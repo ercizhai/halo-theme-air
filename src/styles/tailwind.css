@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 @layer utilities {
-    /* Toc */
-    .toc-active-link {
-        @apply text-sky-400;
-    }
+  /* Toc */
+  .toc-active-link {
+    @apply text-sky-400;
+  }
 }

@@ -1,9 +1,6 @@
 <ul th:fragment="next (categories)" class="pl-[2em]">
-  <li th:fragment="single (categories)" th:each="category : ${categories}">
-    <a
-      th:href="@{${category.status.permalink}}"
-      class="inline-block text-slate-600 hover:text-sky-400 text-base my-1 dark:text-slate-400"
-    >
+  <li th:fragment="single (categories)" th:each="category : ${categories}" class="text-slate-600 dark:text-slate-400">
+    <a th:href="@{${category.status.permalink}}" class="inline-block text-base my-1 hover:text-sky-400">
       <span th:text="|${category.spec.displayName}(${category.status.visiblePostCount})|"> </span>
     </a>
     <th:block th:if="${not #lists.isEmpty(category.children)}">

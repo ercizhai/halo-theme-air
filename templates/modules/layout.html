@@ -1,51 +1,63 @@
 <!DOCTYPE html>
-<html xmlns:th="https://www.thymeleaf.org" lang="en" th:fragment="html (head, aside, content, footer)">
+<html xmlns:th="https://www.thymeleaf.org" lang="en" th:fragment="html (title, aside, content, footer)">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2" />
-    <title th:text="${site.title}"></title>
+    <title th:text="${title} + ' | ' + ${site.title}"></title>
     <link rel="shortcut icon" th:href="${site.favicon}" type="image/x-icon" />
     <link rel="stylesheet" th:href="@{/assets/dist/style.css?v={version}(version=${theme.spec.version})}" />
     <script th:src="@{/assets/dist/main.iife.js?v={version}(version=${theme.spec.version})}"></script>
-    <th:block th:if="${head != null}">
-      <th:block th:replace="${head}" />
-    </th:block>
   </head>
-  <body class="bg-white pl-0 color-scheme-auto desktop:pl-[300px] dark:bg-slate-900">
+  <body class="bg-white pl-0 desktop:pl-[300px] dark:bg-slate-900">
     <div
       id="left-aside"
-      class="min-h-[100vh] h-full w-[300px] max-w-[80vw] bg-slate-100 fixed top-0 left-[-300px] z-20 transition-all overflow-auto desktop:left-0 dark:bg-slate-950"
+      class="min-h-[100vh] h-full w-[300px] max-w-[80vw] bg-slate-100 flex flex-col justify-between items-center fixed top-0 left-[-300px] z-20 transition-all overflow-auto desktop:left-0 dark:bg-slate-950"
     >
-      <div class="flex flex-col justify-center items-center pt-16">
-        <img th:src="${site.logo}" alt="logo" class="w-24 rounded-full" />
-        <h1
-          th:text="${site.title}"
-          class="text-slate-900 font-bold text-2xl leading-relaxed mt-2 dark:text-slate-100"
-        ></h1>
-        <h2 th:text="${site.subtitle}" class="text-slate-600 text-sm dark:text-slate-400"></h2>
-        <p th:if="${not #arrays.isEmpty(theme.config.socials.socialArray)}">
-          <a
-            th:each="social : ${theme.config.socials.socialArray}"
-            th:href="@{${social.link}}"
-            target="_blank"
-            class="inline-block text-lg p-1 text-slate-600 dark:text-slate-400"
+      <div>
+        <div class="flex flex-col justify-center items-center py-16">
+          <img th:src="${site.logo}" alt="logo" class="w-24 rounded-full" />
+          <h1
+            th:text="${site.title}"
+            class="text-slate-900 font-bold text-2xl leading-relaxed mt-2 dark:text-slate-100"
+          ></h1>
+          <h2 th:text="${site.subtitle}" class="text-slate-600 text-sm dark:text-slate-400"></h2>
+          <p
+            th:if="${not #arrays.isEmpty(theme.config.socials.socialArray)}"
+            class="text-slate-600 dark:text-slate-400"
           >
-            <span th:class="|inline-block i-ri-${social.type}-fill|"></span>
-          </a>
-        </p>
-      </div>
-      <div class="mt-24">
-        <ul th:with="menu = ${menuFinder.getPrimary()}" class="flex flex-col justify-center items-center p-4">
-          <li th:each="menuItem : ${menu.menuItems}" class="w-full text-center py-2">
             <a
-              th:href="@{${menuItem.status.href}}"
-              th:text="${menuItem.status.displayName}"
-              th:target="${menuItem.spec.target?.value}"
-              class="text-slate-700 hover:text-sky-400 text-base inline-block w-[50px] text-justify transition-colors dark:text-slate-300"
-            ></a>
-          </li>
-        </ul>
+              th:each="social : ${theme.config.socials.socialArray}"
+              th:href="@{${social.link}}"
+              target="_blank"
+              class="inline-block text-lg p-1 hover:text-sky-400"
+            >
+              <span th:class="|inline-block i-ri-${social.type}-fill|"></span>
+            </a>
+          </p>
+        </div>
+        <div>
+          <ul th:with="menu = ${menuFinder.getPrimary()}" class="flex flex-col justify-center items-center p-4">
+            <li
+              th:each="menuItem : ${menu.menuItems}"
+              class="w-full text-center py-2 text-slate-700 dark:text-slate-300"
+            >
+              <a
+                th:href="@{${menuItem.status.href}}"
+                th:text="${menuItem.status.displayName}"
+                th:target="${menuItem.spec.target?.value}"
+                class="text-base inline-block w-[50px] text-justify transition-colors hover:text-sky-400"
+              ></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="py-6 text-center text-slate-400 dark:text-slate-600">
+        <span
+          id="color-scheme-switch"
+          onclick="main.toggleColorScheme()"
+          class="inline-block text-xl cursor-pointer hover:text-sky-400"
+        ></span>
       </div>
     </div>
     <div class="px-4 py-16 desktop:px-16">
@@ -67,7 +79,7 @@
         </div>
         <div
           id="right-aside"
-          class="w-[300px] max-w-[80vw] ml-0 min-h-[100vh] bg-white p-4 fixed top-0 right-[-300px] z-20 transition-all overflow-auto laptop:static laptop:p-0 laptop:pl-8 laptop:overflow-visible dark:bg-slate-950 laptop:bg-transparent"
+          class="w-[300px] max-w-[80vw] ml-0 min-h-[100vh] bg-white p-4 fixed top-0 right-[-300px] z-20 transition-all overflow-auto laptop:static laptop:p-0 laptop:pl-8 laptop:overflow-visible dark:bg-slate-950 laptop:bg-transparent dark:laptop:bg-transparent"
           th:if="${aside != null }"
         >
           <th:block th:replace="${aside}" />

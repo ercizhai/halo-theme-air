@@ -6,16 +6,53 @@ import * as tocbot from "tocbot";
 // 日夜间模式切换
 type ColorSchemeType = "dark" | "light";
 export let currentColorScheme: ColorSchemeType = "light"; // halo:comment日夜间模式控制
-if (isDarkModeEnabled()) {
-  currentColorScheme = "dark";
-}
+
+colorSchemeInit();
+document.addEventListener("DOMContentLoaded", () => colorSchemeInit());
 
 window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => {
-  currentColorScheme = isDarkModeEnabled() ? "dark" : "light";
+  if (sessionStorage.getItem("colorScheme")) return;
+  isDarkModeEnabled() ? setColorScheme("dark") : setColorScheme("light");
 });
 
 function isDarkModeEnabled() {
   return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+}
+
+function colorSchemeInit() {
+  if (sessionStorage.getItem("colorScheme")) {
+    setColorScheme(sessionStorage.getItem("colorScheme") as ColorSchemeType);
+  } else {
+    isDarkModeEnabled() ? setColorScheme("dark") : setColorScheme("light");
+  }
+}
+
+function setColorScheme(type: ColorSchemeType) {
+  const html = document.documentElement;
+  const colorSchemeSwitch = document.getElementById("color-scheme-switch");
+  if (type === "dark") {
+    currentColorScheme = "dark";
+    html.classList.remove("light");
+    html.classList.add("dark");
+    colorSchemeSwitch?.classList.remove("i-ri-moon-clear-fill");
+    colorSchemeSwitch?.classList.add("i-ri-sun-fill");
+  } else {
+    currentColorScheme = "light";
+    html.classList.remove("dark");
+    html.classList.add("light");
+    colorSchemeSwitch?.classList.remove("i-ri-sun-fill");
+    colorSchemeSwitch?.classList.add("i-ri-moon-clear-fill");
+  }
+}
+
+export function toggleColorScheme() {
+  if (currentColorScheme === "dark") {
+    sessionStorage.setItem("colorScheme", "light");
+    setColorScheme("light");
+  } else {
+    sessionStorage.setItem("colorScheme", "dark");
+    setColorScheme("dark");
+  }
 }
 
 // 目录生成
@@ -32,8 +69,8 @@ export function generateToc() {
     contentSelector: ".markdown-body",
     headingSelector: "h1, h2, h3, h4",
     activeLinkClass: "toc-active-link",
-    extraLinkClasses: "text-sm text-slate-600 inline-block my-1 hover:text-sky-400 dark:text-slate-400",
-    extraListClasses: "ml-[1em]",
+    extraLinkClasses: "text-sm inline-block my-1 hover:text-sky-400",
+    extraListClasses: "ml-[1em] text-slate-600 dark:text-slate-400",
     collapseDepth: 6,
     headingsOffset: 48,
     scrollSmooth: true,
@@ -65,7 +102,6 @@ export function openRightAside() {
 }
 
 export function openMask() {
-  console.log("open");
   const mask = document.getElementById("mask");
   mask?.classList.remove("hidden");
 }
