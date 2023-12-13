@@ -2,6 +2,8 @@ import "./styles/main.css";
 import "./styles/tailwind.css";
 import "./styles/github-markdown.css";
 import * as tocbot from "tocbot";
+import { common, createStarryNight } from "@wooorm/starry-night";
+import { toDom } from "hast-util-to-dom";
 
 // 日夜间模式切换
 type ColorSchemeType = "dark" | "light";
@@ -78,6 +80,7 @@ export function generateToc() {
   });
 }
 
+// 侧边栏控制
 export function checkRightAside() {
   const aside = document.getElementById("right-aside");
   const asideOpenBtn = document.getElementById("aside-open-btn");
@@ -115,4 +118,23 @@ export function closeAllAside() {
   rightAside?.classList.remove("right-0");
   rightAside?.classList.add("right-[-300px]");
   mask?.classList.add("hidden");
+}
+
+// 代码高亮
+export async function highlight() {
+  const starryNight = await createStarryNight(common);
+  const prefix = "language-";
+  const nodes = Array.from(document.querySelectorAll("pre code"));
+
+  for (const node of nodes) {
+    const className = Array.from(node.classList).find(function (d) {
+      return d.startsWith(prefix);
+    });
+    if (!className) continue;
+    const scope = starryNight.flagToScope(className.slice(prefix.length));
+    if (!scope) continue;
+    if (!node.textContent) continue;
+    const tree = starryNight.highlight(node.textContent, scope);
+    node.replaceChildren(toDom(tree, { fragment: true }));
+  }
 }
