@@ -57,7 +57,7 @@
   <th:block th:fragment="footer">
     <script>
       main.generateToc();
-      main.highlight();
+      main.highlight().then(() => main.addCodeCopyBtn());
     </script>
   </th:block>
 </html>

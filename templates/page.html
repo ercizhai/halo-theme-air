@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html
   xmlns:th="https://www.thymeleaf.org"
-  th:replace="~{modules/layout :: html(title = ${singlePage.spec.title}, aside = null, content = ~{::content}, footer = null)}"
+  th:replace="~{modules/layout :: html(title = ${singlePage.spec.title}, aside = null, content = ~{::content}, footer = ~{::footer})}"
 >
   <th:block th:fragment="content">
     <div class="border-slate-200 laptop:border laptop:rounded-lg laptop:p-16 dark:border-slate-800">
@@ -16,5 +16,10 @@
         />
       </div>
     </div>
+  </th:block>
+  <th:block th:fragment="footer">
+    <script>
+      main.highlight();
+    </script>
   </th:block>
 </html>
