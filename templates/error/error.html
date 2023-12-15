@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html
+  xmlns:th="https://www.thymeleaf.org"
+  th:replace="~{modules/layout :: html(title = 'ERROR', aside = null, content = ~{::content}, footer = null)}"
+>
+  <th:block th:fragment="content">
+    <div
+      class="text-center border border-slate-200 rounded-lg my-4 p-2 text-slate-600 laptop:p-16 dark:text-slate-400 dark:border-slate-800"
+    >
+      <h2 class="text-slate-800 text-5xl font-bold mb-4 dark:text-slate-200" th:text="${error.status}"></h2>
+      <div class="text-slate-600 text-2xl dark:text-slate-400">
+        <p th:text="${#strings.defaultString(error.title, 'Internal server error')}"></p>
+        <p th:if="${not #strings.isEmpty(error.detail)}" th:text="${error.detail}"></p>
+      </div>
+      <div class="my-2 text-sm text-slate-800 dark:text-slate-200">
+        <a
+          href="/"
+          class="inline-block py-2 px-3 border border-slate-300 rounded-lg dark:border-slate-700 hover:text-sky-400 hover:border-sky-400 dark:hover:border-sky-400 transition-colors"
+          >返回首页</a
+        >
+      </div>
+    </div>
+  </th:block>
+</html>
