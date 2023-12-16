@@ -41,5 +41,7 @@ module.exports = {
     "i-ri-instagram-fill",
     "i-ri-sun-fill",
     "i-ri-moon-clear-fill",
+    "i-ri-thumb-up-line",
+    "i-ri-thumb-up-fill",
   ],
 };

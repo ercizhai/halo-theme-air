@@ -34,6 +34,15 @@
             ></a>
           </p>
           <p
+            id="upvote-container"
+            onclick="main.upvote()"
+            th:attr="data-post-name=${post.metadata.name}"
+            class="flex flex-col justify-between items-center text-base cursor-pointer w-24 h-24 my-8 pt-5 pb-2 mx-auto border rounded-full border-slate-300 dark:border-slate-700 hover:text-red-500 hover:border-red-500 dark:hover:border-red-500 transition-colors"
+          >
+            <span id="upvote-icon" class="i-ri-thumb-up-line block text-4xl"></span>
+            <span id="upvote-count" th:text="${post.stats.upvote}" class="block text-center font-bold"></span>
+          </p>
+          <p
             class="text-right text-sm"
             th:text="|发表于 ${#dates.format(post.spec.publishTime, 'yyyy-MM-dd HH:mm')}|"
           ></p>
@@ -57,6 +66,7 @@
   <th:block th:fragment="footer">
     <script>
       main.generateToc();
+      main.initUpvote();
       main.highlight().then(() => main.addCodeCopyBtn());
     </script>
   </th:block>
