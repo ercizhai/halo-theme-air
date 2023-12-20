@@ -74,7 +74,7 @@
         </div>
       </div>
       <div class="flex flex-col justify-between min-h-[100vh]">
-        <div class="px-4 py-16 desktop:px-16">
+        <div class="px-4 pt-16 desktop:px-16">
           <div class="mx-auto w-full max-w-7xl flex">
             <div class="flex-1 w-full">
               <th:block th:replace="${content}" />
@@ -88,26 +88,21 @@
             </div>
           </div>
         </div>
-        <div class="py-10 border-t border-slate-200 text-center text-base text-slate-500 dark:border-slate-800">
-          <p>
+        <div class="pt-10 pb-6 text-center text-base text-slate-500">
+          <p th:if="${theme.config.footer.enabled}">
             &copy;<span th:text="${#dates.year(#dates.createNow())}"></span>&nbsp;<a
               th:href="@{${site.url}}"
               th:text="${site.title}"
               class="font-bold hover:text-sky-400 transition-colors"
             ></a
-            >&nbsp;All Rights Reserved.
-          </p>
-          <p>
-            Powerd by
-            <a href="https://www.halo.run/" target="_blank" class="font-bold hover:text-sky-400 transition-colors"
-              >Halo</a
-            >.&nbsp;Theme by
-            <a
-              href="https://github.com/ercizhai/halo-theme-air"
-              target="_blank"
-              class="font-bold hover:text-sky-400 transition-colors"
-              >Air</a
-            >.
+            >&nbsp;All Rights Reserved.<span th:if="not ${#strings.isEmpty(theme.config.footer.icp)}"
+              >&emsp;&emsp;<a
+                href="https://beian.miit.gov.cn"
+                target="_blank"
+                class="hover:text-sky-400 transition-colors"
+                th:text="${theme.config.footer.icp}"
+              ></a
+            ></span>
           </p>
         </div>
       </div>

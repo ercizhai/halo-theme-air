@@ -63,3 +63,19 @@ spec:
               name: link
               label: 地址
               value: ""
+    - group: footer
+      label: Footer
+      formSchema:
+        - $formkit: select
+          name: enabled
+          label: 是否展示Footer
+          value: false
+          options:
+            - label: 是
+              value: true
+            - label: 否
+              value: false
+        - $formkit: text
+          name: icp
+          label: ICP备案号
+          value: ""
