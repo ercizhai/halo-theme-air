@@ -19,6 +19,13 @@ module.exports = {
     })),
   ],
   safelist: [
+    // TOC
+    "ml-[1em]",
+    // 代码复制
+    "right-0",
+    "absolute",
+    "relative",
+    // 社交媒体
     "i-ri-qq-fill",
     "i-ri-rss-fill",
     "i-ri-slack-fill",
@@ -39,8 +46,13 @@ module.exports = {
     "i-ri-bilibili-fill",
     "i-ri-twitter-x-fill",
     "i-ri-instagram-fill",
+    // 主题
     "i-ri-sun-fill",
     "i-ri-moon-clear-fill",
+    // 点赞
+    "text-red-500",
+    "border-red-500",
+    "dark:border-red-500",
     "i-ri-thumb-up-line",
     "i-ri-thumb-up-fill",
   ],

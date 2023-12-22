@@ -2,7 +2,7 @@
   th:fragment="card (post)"
   class="flex flex-col rounded-lg overflow-hidden my-4 first:mt-0 transition-all tablet:flex-row tablet:h-max-[200px]"
 >
-  <div class="flex-[1]" th:if="${not #strings.isEmpty(post.spec.cover)}">
+  <div class="flex-[1] bg-slate-200 dark:bg-slate-800" th:if="${not #strings.isEmpty(post.spec.cover)}">
     <img th:src="${post.spec.cover}" alt="cover" class="w-full aspect-video object-cover tablet:h-auto" />
   </div>
   <div

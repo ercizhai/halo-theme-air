@@ -112,6 +112,13 @@
       class="w-screen h-screen bg-[#0004] fixed top-0 left-0 z-10 hidden transition-colors"
       onclick="main.closeAllAside()"
     ></div>
+    <button
+      id="back-top-btn"
+      onclick="main.backTop()"
+      class="w-12 h-12 p-2 rounded-full bg-slate-100 shadow-lg fixed right-10 bottom-10 hidden dark:bg-slate-950"
+    >
+      <span class="inline-block i-ri-arrow-up-s-line text-slate-500 text-3xl font-bold"></span>
+    </button>
     <th:block th:if="${footer != null }">
       <th:block th:replace="${footer}" />
     </th:block>

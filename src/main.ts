@@ -3,6 +3,7 @@ import "./styles/tailwind.css";
 import "./styles/github-markdown.css";
 
 export { generateToc } from "./scripts/toc";
+export { backTop } from "./scripts/back-top";
 export { highlight } from "./scripts/highlight";
 export { addCodeCopyBtn } from "./scripts/code-copy";
 export { initUpvote, upvote } from "./scripts/upvote";

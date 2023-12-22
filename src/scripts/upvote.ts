@@ -4,8 +4,10 @@ function getUpvotedNames() {
 
 function activateUpvote() {
   const upvoteIcon = document.getElementById("upvote-icon");
+  console.log(upvoteIcon);
   upvoteIcon.classList.remove("i-ri-thumb-up-line");
   upvoteIcon.classList.add("i-ri-thumb-up-fill");
+  upvoteIcon.parentElement.classList.remove("border-slate-300", "dark:border-slate-700");
   upvoteIcon.parentElement.classList.add("text-red-500", "border-red-500", "dark:border-red-500");
 }
 
