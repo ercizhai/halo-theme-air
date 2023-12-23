@@ -1,0 +1,15 @@
+<div class="my-8 first:mt-0">
+  <p class="text-slate-800 font-bold text-lg dark:text-slate-200">热门分类</p>
+  <ul th:with="categories = ${categoryFinder.list(1, 5)}" class="mt-2 text-sm text-slate-600 dark:text-slate-400">
+    <li th:each="category : ${categories.items}" class="py-1">
+      <a th:href="@{${category.status.permalink}}" class="hover:text-sky-400">
+        <span class="inline-block i-ri-archive-2-line align-middle"></span>
+        <span>&nbsp;</span>
+        <span th:text="${category.spec.displayName}" class="align-middle"></span>
+      </a>
+    </li>
+    <li class="py-1">
+      <a href="/categories" class="font-bold hover:text-sky-400">查看更多...</a>
+    </li>
+  </ul>
+</div>

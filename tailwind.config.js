@@ -21,6 +21,7 @@ module.exports = {
   safelist: [
     // TOC
     "ml-[1em]",
+    "toc-active-link",
     // 代码复制
     "right-0",
     "absolute",

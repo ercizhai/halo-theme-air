@@ -1,0 +1,20 @@
+<div class="my-8 first:mt-0">
+  <p class="text-slate-800 font-bold text-lg dark:text-slate-200">热门标签</p>
+  <div th:with="tags = ${tagFinder.list(1, 12)}" class="mt-2 text-xs text-slate-600 dark:text-slate-400 flex flex-wrap">
+    <a
+      th:each="tag : ${tags}"
+      th:href="@{${tag.status.permalink}}"
+      class="hover:text-sky-400 py-1 px-2 m-1 inline-flex justify-between items-center rounded-full border border-slate-400 hover:border-sky-400 dark:border-slate-600 dark:hover:border-sky-400"
+    >
+      <span class="inline-block i-ri-price-tag-3-line"></span>
+      <span>&nbsp;</span>
+      <span th:text="|${tag.spec.displayName}(${tag.status.visiblePostCount})|"></span>
+    </a>
+    <a
+      href="/tags"
+      class="hover:text-sky-400 font-bold py-1 px-2 m-1 rounded-full border border-slate-400 hover:border-sky-400 dark:border-slate-600 dark:hover:border-sky-400"
+    >
+      查看更多...
+    </a>
+  </div>
+</div>

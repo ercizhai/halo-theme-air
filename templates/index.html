@@ -5,6 +5,9 @@
 >
   <th:block th:fragment="aside">
     <div th:replace="~{modules/search}"></div>
+    <div th:replace="~{modules/categories-card}"></div>
+    <div th:replace="~{modules/tags-card}"></div>
+    <div th:replace="~{modules/site-card}"></div>
   </th:block>
   <th:block th:fragment="content">
     <th:block th:replace="~{modules/post-list :: list(posts = ${posts})}"></th:block>
