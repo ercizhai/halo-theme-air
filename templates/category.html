@@ -4,7 +4,7 @@
   th:replace="~{modules/layout :: html(title = '分类：' + ${category.spec.displayName}, aside = null, content = ~{::content}, footer = null)}"
 >
   <th:block th:fragment="content">
-    <h2 class="text-slate-800 text-4xl font-bold mb-4 dark:text-slate-200">
+    <h2 class="text-slate-800 text-2xl font-bold mb-4 dark:text-slate-200">
       分类：<span th:text="${category.spec.displayName}"></span>
     </h2>
     <th:block th:replace="~{modules/post-list :: list(posts = ${posts})}"></th:block>
