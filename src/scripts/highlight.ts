@@ -14,6 +14,13 @@ export async function highlight() {
     const scope = starryNight.flagToScope(className.slice(prefix.length));
     if (!scope) continue;
     const tree = starryNight.highlight(node.textContent, scope);
-    node.replaceChildren(toDom(tree, { fragment: true }));
+    const code = document.createElement("code");
+    code.appendChild(toDom(tree, { fragment: true }));
+    const pre = document.createElement("pre");
+    pre.appendChild(code);
+    const div = document.createElement("div");
+    div.appendChild(pre);
+    div.classList.add("relative", "w-full", "code-block");
+    node.parentElement.replaceWith(div);
   }
 }

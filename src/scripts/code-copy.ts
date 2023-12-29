@@ -1,7 +1,7 @@
 import ClipBoard from "clipboard";
 
 export function addCodeCopyBtn() {
-  const codeBlocks = document.querySelectorAll("pre code");
+  const codeBlocks = document.querySelectorAll(".code-block");
   codeBlocks.forEach((codeBlock) => {
     const btn = document.createElement("button");
     btn.setAttribute(
@@ -9,8 +9,7 @@ export function addCodeCopyBtn() {
       "copy-btn block absolute top-0 right-0 p-1 text-base text-slate-700 dark:text-slate-300 hover:text-sky-400 dark:hover:text-sky-400 transition-colors"
     );
     btn.textContent = "Copy";
-    codeBlock.parentElement?.classList.add("relative");
-    codeBlock.parentElement?.appendChild(btn);
+    codeBlock.appendChild(btn);
   });
 
   const clipboard = new ClipBoard(".copy-btn", {
