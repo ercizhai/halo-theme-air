@@ -65,7 +65,8 @@
     </div>
     <div>
       <div
-        class="fixed top-0 left-0 z-10 w-screen h-12 flex justify-between items-center p-2 bg-slate-100 shadow desktop:hidden dark:bg-slate-950"
+        id="header"
+        class="fixed top-0 left-0 z-10 w-screen h-12 flex justify-between items-center p-2 bg-slate-100 desktop:hidden dark:bg-slate-950"
       >
         <img th:src="${site.logo}" alt="logo" class="h-8" onclick="main.openLeftAside()" />
         <h1 th:text="${site.title}" class="text-slate-900 font-bold text-lg dark:text-slate-100"></h1>
