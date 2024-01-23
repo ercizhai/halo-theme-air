@@ -2,7 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer utilities {
+@layer components {
+  .theme-link {
+    @apply text-inherit hover:text-sky-400 transition-colors;
+  }
   /* Toc */
   .toc-active-link {
     @apply text-sky-400;

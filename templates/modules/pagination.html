@@ -2,11 +2,11 @@
   th:fragment="pagination (current, total, prev, next)"
   class="mt-4 p-2 rounded-lg border border-slate-200 flex justify-between items-center text-slate-600 text-base dark:border-slate-800 dark:text-slate-400"
 >
-  <a th:href="@{${prev}}" class="hover:text-sky-400 transition-colors">
+  <a th:href="@{${prev}}" class="theme-link">
     <span>上一页</span>
   </a>
   <span th:text="${current} +' / '+ ${total}"></span>
-  <a th:href="@{${next}}" class="hover:text-sky-400 transition-colors">
+  <a th:href="@{${next}}" class="theme-link">
     <span>下一页</span>
   </a>
 </div>

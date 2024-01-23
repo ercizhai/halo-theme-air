@@ -23,7 +23,7 @@
         th:each="tag : ${post.tags}"
         th:text="|#${tag.spec.displayName}|"
         th:href="@{${tag.status.permalink}}"
-        class="inline-block px-1 hover:text-sky-400 transition-colors"
+        class="theme-link inline-block px-1"
       ></a>
     </li>
     <li th:if="${not #arrays.isEmpty(post.categories)}" class="py-1 flex flex-wrap justify-start items-center">
@@ -33,7 +33,7 @@
         th:each="category : ${post.categories}"
         th:text="${category.spec.displayName}"
         th:href="@{${category.status.permalink}}"
-        class="inline-block px-1 hover:text-sky-400 transition-colors"
+        class="theme-link inline-block px-1"
       ></a>
     </li>
     <li class="py-1 flex justify-start items-center">
