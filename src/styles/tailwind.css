@@ -6,6 +6,9 @@
   .theme-link {
     @apply text-inherit hover:text-sky-400 transition-colors;
   }
+  .theme-link-border {
+    @apply border rounded-full border-slate-400 hover:border-sky-400 dark:border-slate-600 dark:hover:border-sky-400;
+  }
   /* Toc */
   .toc-active-link {
     @apply text-sky-400;

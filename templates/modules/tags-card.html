@@ -4,17 +4,12 @@
     <a
       th:each="tag : ${tags}"
       th:href="@{${tag.status.permalink}}"
-      class="theme-link py-1 px-2 m-1 inline-flex justify-between items-center rounded-full border border-slate-400 hover:border-sky-400 dark:border-slate-600 dark:hover:border-sky-400"
+      class="theme-link theme-link-border py-1 px-2 m-1 inline-flex justify-between items-center"
     >
       <span class="inline-block i-ri-price-tag-3-line"></span>
       <span>&nbsp;</span>
       <span th:text="|${tag.spec.displayName}(${tag.status.visiblePostCount})|"></span>
     </a>
-    <a
-      href="/tags"
-      class="theme-link font-bold py-1 px-2 m-1 rounded-full border border-slate-400 hover:border-sky-400 dark:border-slate-600 dark:hover:border-sky-400"
-    >
-      查看更多...
-    </a>
+    <a href="/tags" class="theme-link theme-link-border font-bold py-1 px-2 m-1"> 查看更多... </a>
   </div>
 </div>
